@@ -9,7 +9,6 @@ function Edit (props) {
         username = {props.username}
         email = {props.email}
         id= {props.id}
-        usernameChange = {props.usernameChange}
         />
 
         </React.Fragment>

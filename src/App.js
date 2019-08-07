@@ -5,16 +5,14 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Directory from './components/pages/directory'
 import Edit from './components/pages/edit'
 
+// just need to repeat for inputs. make input if empty not be empty for setstate
+
 class App extends React.Component  {
   constructor(props) {
     super(props);
     this.state = {
       users: [],
-      data: [],
-      editData: {username: null,
-                  email: null,
-                  phone: null,
-                  website: null}    };
+      data: {}};
   }
 
   componentDidMount() {
@@ -37,7 +35,7 @@ class App extends React.Component  {
   
       if (dataCopy[index].id === this.state.data.id) {
         this.setState({
-          data: []
+          data: {}
         });
       }
       dataCopy.splice(index, 1);
@@ -56,21 +54,19 @@ class App extends React.Component  {
       });
     };
 
-submit = (id) => {
-  console.log("submit!", id)
-  let dataCopy = JSON.parse(JSON.stringify(this.state.editData));
-  this.setState({users: dataCopy});
-}
+submit = (data) => {
+  console.log("submit!",data.id, data.un)
+  console.log("submit!!!!!!!!!!!!!!!!!")
+  let objectCopy = JSON.parse(JSON.stringify(this.state.data));
+  objectCopy.username = data.un
 
-username = (e) => {
-  let dataCopy = {...this.state.editData};
-  dataCopy.username = e.target.value
-  console.log(dataCopy)
-  this.setState({editData: dataCopy});
-  // console.log("edit data!",this.state.editData)
- 
+  let dataCopy = JSON.parse(JSON.stringify(this.state.users));
+  dataCopy[data.id -1].username = data.un
+
+  this.setState({users: dataCopy, data: objectCopy });
 
 }
+
 
    render() {
   return (
@@ -104,7 +100,6 @@ exact render = {props => (
   {...props}
   {...this.state.data}
   submit = {this.submit}
-  usernameChange = {this.username}
   id = {this.state.data.id}
   />
 
