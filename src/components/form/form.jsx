@@ -8,6 +8,12 @@ import {
 function Forms(props) {
   console.log("PROPS::", props);
   let username = '';
+  let email = '';
+  let phone = '';
+  let website = '';
+
+
+
   return (
     <React.Fragment>
       <Form>
@@ -20,7 +26,33 @@ function Forms(props) {
               console.log(username)
             }}
           />
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            placeholder={props.email}
+            onChange={event => {
+              email = event.target.value
+              console.log(email)
+            }}
+          />
+           <Form.Label>Phone</Form.Label>
+          <Form.Control
+            placeholder={props.phone}
+            onChange={event => {
+              phone = event.target.value
+              console.log(phone)
+            }}
+          />
+           <Form.Label>Website</Form.Label>
+          <Form.Control
+            placeholder={props.website}
+            onChange={event => {
+              website = event.target.value
+              console.log(website)
+            }}
+          />
         </Form.Group>
+        
+        
         <Button
           variant="primary"
           type="submit"
@@ -28,7 +60,7 @@ function Forms(props) {
             e.preventDefault();
             console.log("DATA::",{ id: props.id, un: username });
             
-            props.submit({ id: props.id, un: username });
+            props.submit({ id: props.id, un: username,email: email, website: website, phone: phone });
           }}
         >
           Submit

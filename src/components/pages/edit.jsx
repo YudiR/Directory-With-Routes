@@ -9,6 +9,8 @@ function Edit (props) {
         username = {props.username}
         email = {props.email}
         id= {props.id}
+        phone = {props.phone}
+        website = {props.website}
         />
 
         </React.Fragment>

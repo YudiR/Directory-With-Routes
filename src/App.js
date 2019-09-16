@@ -55,10 +55,13 @@ class App extends React.Component  {
     };
 
 submit = (data) => {
-  console.log("submit!",data.id, data.un)
+  console.log("submit!heeeeeeeeyyyyyaksfajslkfjlsk",data.id, data.un)
   console.log("submit!!!!!!!!!!!!!!!!!")
   let objectCopy = JSON.parse(JSON.stringify(this.state.data));
   objectCopy.username = data.un
+  objectCopy.email = data.email
+  objectCopy.phone = data.phone
+  objectCopy.website= data.website
 
   let dataCopy = JSON.parse(JSON.stringify(this.state.users));
   dataCopy[data.id -1].username = data.un
