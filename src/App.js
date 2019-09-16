@@ -4,7 +4,7 @@ import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Directory from './components/pages/directory'
 import Edit from './components/pages/edit'
-
+import {data} from './modules'
 // just need to repeat for inputs. make input if empty not be empty for setstate
 
 class App extends React.Component  {
@@ -16,7 +16,7 @@ class App extends React.Component  {
   }
 
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/users")
+       data()
       .then(resp => resp.json()) // Transform the data into json
       .then(data => {
         let userArray = data.map((e, i) => e);
